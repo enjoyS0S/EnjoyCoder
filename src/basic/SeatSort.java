@@ -26,7 +26,13 @@ public class SeatSort {
 			System.out.print(i + " ");
 		}
 	}
-
+	
+	/**
+	 * 设置两个position，start是数组开头，end是数组的末尾
+	 * 从start位置处开始检测数组中的元素，如果是偶数的话，将end处的元素与start处的元素交换，此时end--；当start处的元素为奇数的时候，start++，移动到下一位；
+	 * 直至start=end的时候结束循环，说明整个数组的元素已经排序好。
+	 * 这个算法的优点在于，不用将整个数组进行遍历，但是为不稳定算法。
+	 */
 	public int[] seatSort1(int[] source) {
 		int start = 0;
 		int end = source.length - 1;
@@ -42,6 +48,10 @@ public class SeatSort {
 		return source;
 	}
 
+	/**
+	 * 将排序之后的数组存放在一个新的数组中去
+	 * 遍历数组中的每个元素，将奇数从新数组的开头开始存放，将偶数从新数组的末尾开始存放。
+	 */
 	public int[] seatSort2(int[] source) {
 		if (source.length <= 1)
 			return source;
