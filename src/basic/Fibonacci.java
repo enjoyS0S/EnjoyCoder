@@ -58,9 +58,8 @@ public class Fibonacci {
 	 * @return
 	 */
 	public int fibonacci2(int n) {
-		if (n < 0)
-			return 0;
 		int[] result = { 0, 1, 2 };
-		return n < 3 ? result[n] : fibonacci2(n - 1) + fibonacci2(n - 2);
+		return n < 3 ? (n < 0 ? 0 : result[n]) : fibonacci2(n - 1)
+				+ fibonacci2(n - 2);
 	}
 }
