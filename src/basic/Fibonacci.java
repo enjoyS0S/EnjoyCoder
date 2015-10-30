@@ -38,6 +38,8 @@ public class Fibonacci {
 	 */
 	public int fibonacci1(int n) {
 		if (n <= 0)
+			return -1;
+		if (n == 0)
 			return 0;
 		if (n == 1)
 			return 1;
@@ -61,5 +63,14 @@ public class Fibonacci {
 		int[] result = { 0, 1, 2 };
 		return n < 3 ? (n < 0 ? 0 : result[n]) : fibonacci2(n - 1)
 				+ fibonacci2(n - 2);
+	}
+
+	/**
+	 * 变态青蛙跳台阶 一直青蛙一次可以跳一级台阶，也可以跳两级台阶……，更可以跳n级台阶，问：n级台阶共有多少中跳法？ 分析：f(1) = 1 f(2)
+	 * = f(2-1) + f(2-2) f(3) = f(3-1) + f(3-2) + f(3-3) …… f(n) = f(n-1) +
+	 * f(n-2) + f(n-3) + …… + f(n - n) 说明：1.这里的f(n)代表的是个台阶有一次1，2，3，……n阶的跳法数。 2.
+	 */
+	public int jumpFloor1(int n) {
+		return 1 << --n;
 	}
 }
