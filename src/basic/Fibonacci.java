@@ -5,7 +5,9 @@ import java.util.Scanner;
 /**
  * 测试斐波那契数列
  * 
- * 斐波那契数列数列的应用 问题：一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 分析：
+ * 斐波那契数列数列的应用 
+ * 
+ * 问题：一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 分析：
  * 
  * 考虑1个台阶，只有1跳法，则 f(1) = 1
  * 
@@ -17,6 +19,25 @@ import java.util.Scanner;
  * 
  * 实则上为斐波那契数列。可以用递归，也可以用循环方法求解。
  * 
+ * ---------------------------------------------------------------------------
+ * 
+ * 问题：我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少中方法？分析：
+ * 
+ * 此题依旧是斐波那契数列数列的应用
+ * 
+ * 有以下几种情形：
+ * 
+ * 1.n = 0 时，大矩形为2*0；直接return 1
+ * 
+ * 2.n = 1 时，大矩形为2*1，只有1种摆法，即f(1) = 1；直接return 1
+ * 
+ * 3.n = 2 时，大矩形为2*2，有2种摆法, 即f(2) == 2；直接return 2
+ * 
+ * 4.n = 3 时，大矩形为2*3，有三种摆法, 即f(3) = f(2) + f(1)；return 3
+ * 
+ * ……
+ * 
+ * 5.n = n时，大矩形为2*n，有f(n-1) + f(n-2)种。实际为斐波那契数列的一种应用
  * @author S0S
  *
  */
@@ -24,10 +45,12 @@ public class Fibonacci {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		sc.close();
 		Fibonacci f = new Fibonacci();
-		System.out.print(f.fibonacci2(n) + " ");
+		while(sc.hasNext()){
+			int n = sc.nextInt();
+			System.out.print(f.fibonacci2(n) + " ");
+		}
+		sc.close();
 	}
 
 	/**
@@ -40,12 +63,10 @@ public class Fibonacci {
 		if (n <= 0)
 			return -1;
 		if (n == 0)
-			return 0;
-		if (n == 1)
 			return 1;
 		int pre = 0, next = 1;
 		int curr = 0;
-		for (int i = 2; i <= n; i++) {
+		for (int i = 1; i <= n; i++) {
 			curr = pre + next;
 			pre = next;
 			next = curr;
