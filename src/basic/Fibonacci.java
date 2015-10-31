@@ -101,7 +101,7 @@ public class Fibonacci {
 	 * 当n=4时，有8种解法，1 << --4;
 	 * 当n=5时，有16种解法，1 << --5;
 	 * ……
-	 * 当n=n时，有2种解法，1 << --n;
+	 * 当n=n时，有n种解法，1 << --n;
 	 */
 	public int jumpFloor2(int n) {
 		return 1 << --n;
