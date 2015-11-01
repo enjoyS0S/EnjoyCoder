@@ -1,7 +1,5 @@
 package basic;
 
-import java.util.Scanner;
-
 /**
  * 求一个数转换成2进制，2进制里边有多少个1
  * 
@@ -9,14 +7,6 @@ import java.util.Scanner;
  *
  */
 public class NumberOf1 {
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int input = sc.nextInt();
-		NumberOf1 nbo = new NumberOf1();
-		System.out.println(nbo.numberOf1_2(input));
-		sc.close();
-	}
 
 	/**
 	 * 利用位运算，这个方法完美的解决了统计一个数二进制中1的个数，但是有一个问题，当我们输入的数为负数时，这个方法就不是那么的强大的。
@@ -70,6 +60,30 @@ public class NumberOf1 {
 		while (n != 0) {
 			count++;
 			n = (n - 1) & n;
+		}
+		return count;
+	}
+
+	/*
+	 * 问题：判断一个整数是不是2的整数次方。
+	 * 分析：针对上边的分析，我们知道如果一个整数是2的整数次方，它的二进制中肯定只有一个1。我们把这个整数减去1之后再和它自己做位与运算
+	 * ，这个整数如果是如果变成0，则就是2的整数次方，否则就不是
+	 */
+	public boolean isPow2(int n) {
+		return (n & (n - 1)) == 0 ? true : false;
+	}
+
+	/*
+	 * 问题：两个整数m，n，计算需要该变m的二进制表示中的多少位才能得到n。比如9的二进制为1001，12的二进制为1100，需要改变其中的2位才能得到1100
+	 * 分析：我们可以分两步对此题求解，首先对m和n异或，然后再统计异或之后的值中有多少个1。
+	 */
+	public int mToN(int m, int n) {
+		int temp = m ^ n;
+		// return numberOf1_3(temp);
+		int count = 0;
+		while (temp != 0) {
+			count++;
+			temp = (temp - 1) & temp;
 		}
 		return count;
 	}
