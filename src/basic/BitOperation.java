@@ -7,7 +7,7 @@ package basic;
  * @author S0S
  *
  */
-public class NumberOf1 {
+public class BitOperation {
 
 	/*
 	 * 问题：计算一个整数的二进制中有多少个1
