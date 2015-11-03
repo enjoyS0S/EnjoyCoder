@@ -34,7 +34,7 @@ public class Reorder {
 	 * ）从前往后扫描，直到该指针指向偶数；末尾指针（end）从后往前扫描，直到该指针指向奇数。然后两个指针位的元素进行交换。
 	 */
 	public int[] reorderOddEven_0(int[] source) {
-		if (source.length == 0)
+		if (source == null | source.length == 0)
 			return null;
 		int begin = 0;
 		int end = source.length - 1;
@@ -82,7 +82,7 @@ public class Reorder {
 	}
 
 	public int[] reorder(int[] source, IsTrue is) {
-		if (source.length == 0)
+		if (source == null | source.length == 0)
 			return null;
 		int begin = 0;
 		int end = source.length - 1;
