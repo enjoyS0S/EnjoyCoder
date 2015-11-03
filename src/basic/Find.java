@@ -19,7 +19,7 @@ public class Find {
 	 * 顺序查找，顺序查找是最常见的一种查找算法，但是其效率是最低的。 它的时间复杂度为O(n)
 	 */
 	public int orderFind(int[] source, int len, int key) {
-		if (source == null | len == 0)
+		if (source == null || len == 0)
 			return -1;
 		for (int i = 0; i < len; i++) {
 			if (source[i] == key)
@@ -32,7 +32,7 @@ public class Find {
 	 * 二分查找，二分查找使我们用的最多的一种查找算法，效率也很高。它的时间复杂度为O(logN)
 	 */
 	public int middleFind(int[] source, int len, int key) {
-		if (source == null | len == 0)
+		if (source == null || len == 0)
 			return -1;
 		int start = 0, end = source.length - 1;
 		while (start <= end) {
