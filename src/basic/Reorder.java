@@ -22,6 +22,10 @@ public class Reorder {
 		int[] oddEven = even.reorderOddEven_0(source);
 		for (int i : oddEven)
 			System.out.print(i + " ");
+		oddEven = even.reorderThreeAliquot(source);
+		System.out.println();
+		for (int i : oddEven)
+			System.out.print(i + " ");
 	}
 
 	/*
@@ -47,9 +51,13 @@ public class Reorder {
 	}
 
 	/*
-	 * 问题：将数组中的元素奇数放在前，偶数放在后 
-	 * 分析：对于此题，上述解答已经算是一个很好的解决方案，但是，如果现在问题不是将奇数和偶数分离，而是将负数和正数分离怎么办？我想很多人应该会说，我们只需要修改第2、3个while里边的判断条件就可以了。但是如果我们有需要将能被3整除和不能被3整除的数分开，这是我们可能又会说还是只需要将第2、3个while里边的判断条件修改一下就可以了。但是，我们会发现整段代码，除了第2、3个while的判断条件不同之外，其它的代码都不变，这时我们就要考虑的程序的可扩展性。
- 	 * 解法：这是我们就会想到java的回调，我们只需要就其判断条件通过回调，然后在上层函数中实现对其的判断就可以了。具体实现如下。	 
+	 * 问题：将数组中的元素奇数放在前，偶数放在后
+	 * 分析：对于此题，上述解答已经算是一个很好的解决方案，但是，如果现在问题不是将奇数和偶数分离，而是将负数和正数分离怎么办
+	 * ？我想很多人应该会说，我们只需要修改第2
+	 * 、3个while里边的判断条件就可以了。但是如果我们有需要将能被3整除和不能被3整除的数分开，这是我们可能又会说还是只需要将第2
+	 * 、3个while里边的判断条件修改一下就可以了
+	 * 。但是，我们会发现整段代码，除了第2、3个while的判断条件不同之外，其它的代码都不变，这时我们就要考虑的程序的可扩展性。
+	 * 解法：这是我们就会想到java的回调，我们只需要就其判断条件通过回调，然后在上层函数中实现对其的判断就可以了。具体实现如下。
 	 */
 	public int[] reorderOddEven_1(int[] source) {
 		return reorder(source, new IsTrue() {
@@ -68,7 +76,7 @@ public class Reorder {
 		return reorder(source, new IsTrue() {
 			@Override
 			public boolean isTrue(int key) {
-				return (key % 3) == 0 ? false : true;
+				return (key % 3) != 0 ? false : true;
 			}
 		});
 	}
