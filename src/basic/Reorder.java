@@ -19,13 +19,42 @@ public class Reorder {
 	public static void main(String[] args) {
 		int[] source = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		Reorder even = new Reorder();
+		System.out.print("reorderOddEven_0:");
 		int[] oddEven = even.reorderOddEven_0(source, source.length);
 		for (int i : oddEven)
 			System.out.print(i + " ");
-		oddEven = even.reorderThreeAliquot(source, source.length);
-		System.out.println();
+		System.out.print("\nreorderOddEven_1:");
+		oddEven = even.reorderOddEven_1(source, source.length);
 		for (int i : oddEven)
 			System.out.print(i + " ");
+		System.out.print("\nreorderOddEven_2:");
+		oddEven = even.reorderOddEven_2(source, source.length);
+		for (int i : oddEven)
+			System.out.print(i + " ");
+		System.out.print("\nreorderThreeAliquot:");
+		oddEven = even.reorderThreeAliquot(source, source.length);
+		for (int i : oddEven)
+			System.out.print(i + " ");
+	}
+
+	/*
+	 * 问题：将数组中的元素奇数放在前，偶数放在后
+	 * 分析：创建一个和已知数组等长的数组。扫描已知数组，将奇数从新数组首部开始存储，偶数从新数组末尾开始存放。
+	 */
+	public int[] reorderOddEven_0(int[] source, int len) {
+		if (source == null || len <= 0)
+			return null;
+		int[] newResult = new int[source.length];
+		int index = 0;
+		int begin = 0, end = source.length - 1;
+		while (index < source.length) {
+			if ((source[index] & 0x01) == 1)
+				newResult[begin++] = source[index];
+			else
+				newResult[end--] = source[index];
+			index++;
+		}
+		return newResult;
 	}
 
 	/*
@@ -33,7 +62,7 @@ public class Reorder {
 	 * 分析：设置两个指正，一个指针（begin）指向数组的首位，一个指针（end）指向数组的末尾。首位指针（begin
 	 * ）从前往后扫描，直到该指针指向偶数；末尾指针（end）从后往前扫描，直到该指针指向奇数。然后两个指针位的元素进行交换。
 	 */
-	public int[] reorderOddEven_0(int[] source, int len) {
+	public int[] reorderOddEven_1(int[] source, int len) {
 		if (source == null || len <= 0)
 			return null;
 		int begin = 0;
@@ -59,7 +88,7 @@ public class Reorder {
 	 * 。但是，我们会发现整段代码，除了第2、3个while的判断条件不同之外，其它的代码都不变，这时我们就要考虑的程序的可扩展性。
 	 * 解法：这是我们就会想到java的回调，我们只需要就其判断条件通过回调，然后在上层函数中实现对其的判断就可以了。具体实现如下。
 	 */
-	public int[] reorderOddEven_1(int[] source, int len) {
+	public int[] reorderOddEven_2(int[] source, int len) {
 		return reorder(source, len, new IsTrue() {
 			@Override
 			public boolean isTrue(int key) {
