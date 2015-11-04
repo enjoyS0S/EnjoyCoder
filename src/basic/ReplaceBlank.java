@@ -1,5 +1,10 @@
 package basic;
 
+/**
+ * 
+ * @author S0S
+ *
+ */
 public class ReplaceBlank {
 
 	public static void main(String[] args) {
@@ -24,7 +29,8 @@ public class ReplaceBlank {
 		// 字符数组中空格长度
 		int numberBlank = 0;
 		int index = 0;
-		while (index < cs.length || cs[index] != 0) {
+		System.out.println("长度：" + cs.length);
+		while (index < cs.length && cs[index] != 0) {
 			originalLength++;
 			if (cs[index] == ' ')
 				numberBlank++;
