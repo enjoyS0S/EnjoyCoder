@@ -1,8 +1,10 @@
 package basic;
 
 /**
- * 在网络编程中，如果URL参数中含有特殊字符，如空格、‘#’等，可能导致服务器端无法获得正确的参数值。我们需要将这些特殊的字符号转换成服务器可以识别的字符。转换的规则是在‘%’后面跟上ASCII码的两位十六进制的表示。比如空格的ASCII码是32，即十六进制的0x20，因此空格被替换成“%20”。再比如’#‘的ASCII码为35，即16进制的0x23，它在URL中被替换为“%23”。
- *  
+ * 在网络编程中，如果URL参数中含有特殊字符，如空格、‘#’等，可能导致服务器端无法获得正确的参数值。我们需要将这些特殊的字符号转换成服务器可以识别的字符。
+ * 转换的规则是在‘%’后面跟上ASCII码的两位十六进制的表示。比如空格的ASCII码是32，即十六进制的0x20，因此空格被替换成“%20”。再比如’#‘
+ * 的ASCII码为35，即16进制的0x23，它在URL中被替换为“%23”。
+ * 
  * @author S0S
  *
  */
@@ -15,7 +17,11 @@ public class ReplaceBlank {
 				str.toCharArray().length));
 		System.out.println(rb.replaceBlank_1(str.toCharArray(), 127));
 	}
-
+	
+	/**
+	  * 遇到此问题，很多人会说，java直接就提供给我们一个方法，而且特别的方便。
+	  * 参考代码如下
+	  */
 	public String replaceBlank_0(char[] cs, int len) {
 		if (cs == null || len <= 0)
 			return "";
