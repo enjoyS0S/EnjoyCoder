@@ -7,4 +7,10 @@ public class Sort{
 
 	public void zhjInsert(int[] source, int n) {
 	}
+
+	public void ksSort(int[] source,int n) {
+	}
+
+	public void mpSort(int[] source, int n) {
+	}
 }
