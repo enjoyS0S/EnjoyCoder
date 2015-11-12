@@ -17,7 +17,10 @@ public class Sort{
 	 */
 	public void ksSort(int[] source,int n) {
 	}
-
+	
+	/*
+	 * 冒泡排序
+	 */
 	public void mpSort(int[] source, int n) {
 	}
 }
