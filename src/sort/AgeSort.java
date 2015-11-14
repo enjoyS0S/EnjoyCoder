@@ -9,7 +9,7 @@ package sort;
 public class AgeSort {
 
 	public static void main(String[] args) {
-
+		int[] source = {12};
 	}
 
 	/*
