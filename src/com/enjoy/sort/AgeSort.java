@@ -1,15 +1,15 @@
-package sort;
+package com.enjoy.sort;
 
 /**
  * sort
  * 
  * @author S0S
- *
+ * 
  */
 public class AgeSort {
 
 	public static void main(String[] args) {
-		int[] source = {12};
+		int[] source = { 12 };
 	}
 
 	/*
@@ -17,11 +17,10 @@ public class AgeSort {
 	 */
 	public int[] sortAge(int[] source, int len) {
 		int[] temp = new int[99];
-		for(int i = 0; i < len; i++){
-			temp[source] ++;
+		for (int i = 0; i < len; i++) {
 		}
-		for(int i = 0; i < len; i++){
-			source[i] = temp[0];	
+		for (int i = 0; i < len; i++) {
+			source[i] = temp[0];
 		}
 		return null;
 	}

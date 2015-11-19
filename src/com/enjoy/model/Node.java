@@ -1,7 +1,7 @@
-package model;
+package com.enjoy.model;
 
 /**
- * ¶þ²æÊ÷
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * 
  * @author S0S
  *
