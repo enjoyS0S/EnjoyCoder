@@ -1,4 +1,4 @@
-package basic;
+package com.enjoy.basic;
 
 import java.util.Scanner;
 

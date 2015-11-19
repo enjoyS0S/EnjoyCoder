@@ -1,19 +1,12 @@
-package basic;
+package com.enjoy.basic;
 
 /**
  * 这里主要介绍常用的查找算法
  * 
  * @author S0S
- *
+ * 
  */
 public class Find {
-
-	public static void main(String[] args) {
-		int[] source = { 1, 2, 3, 4, 6, 7, 8, 12, 34, 56, 212 };
-		Find f = new Find();
-		System.out.println(f.orderFind(source, source.length, 50));
-		System.out.println(f.middleFind(source, source.length, 4));
-	}
 
 	/*
 	 * 顺序查找，顺序查找是最常见的一种查找算法，但是其效率是最低的。 它的时间复杂度为O(n)
