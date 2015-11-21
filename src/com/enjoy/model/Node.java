@@ -1,10 +1,10 @@
 package com.enjoy.model;
 
 /**
- * ������
+ * 二叉树
  * 
  * @author S0S
- *
+ * 
  */
 public class Node {
 

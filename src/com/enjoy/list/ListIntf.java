@@ -21,7 +21,7 @@ public interface ListIntf {
 	/**
 	 * 若为空表则返回true，否则返回false
 	 */
-	public boolean isEnpty();
+	public boolean isEmpty();
 
 	/**
 	 * 返回第i个元素的值
@@ -41,7 +41,7 @@ public interface ListIntf {
 	/**
 	 * 返回链表的后继
 	 */
-	public Object getNext();
+	public Object getNext(Object obj);
 
 	/**
 	 * 删除第i个元素，并返回其值，表长度减1
