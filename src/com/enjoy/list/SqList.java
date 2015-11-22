@@ -29,11 +29,11 @@ public class SqList<T> implements ListIntf<T> {
 
 	public SqList() {
 		super();
-		objs = newArrayByArrayClass(SqList<T>, maxlen);
+		objs = newArrayByArrayClass(E, maxlen);
 	}
 
 	@SuppressWarnings({ "unchecked", "hiding" })
-	public <T> T[] newArrayByArrayClass(Class<T[]> clazz, int length) {
+	public <T> T[] newArrayByArrayClass(Class<?> clazz, int length) {
 		T[] newInstance = (T[]) Array.newInstance(clazz.getComponentType(),
 				length);
 		return newInstance;
