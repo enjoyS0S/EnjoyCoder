@@ -1,5 +1,6 @@
 package com.enjoy.test.list;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 import org.junit.Test;
