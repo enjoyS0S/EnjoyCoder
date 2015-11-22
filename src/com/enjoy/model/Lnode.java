@@ -1,7 +1,7 @@
 package com.enjoy.model;
 
 /**
- * 单链表
+ * 链表结点类型
  * 
  * @author S0S
  * 
@@ -9,6 +9,6 @@ package com.enjoy.model;
 public class Lnode<T> {
 
 	public T data;
-	public Lnode next;
+	public Lnode<T> next;
 
 }

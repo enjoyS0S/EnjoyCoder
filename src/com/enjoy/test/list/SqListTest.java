@@ -1,14 +1,17 @@
 package com.enjoy.test.list;
 
-import java.util.LinkedList;
 import java.util.Random;
 
 import org.junit.Test;
 
-import sun.rmi.runtime.Log;
-
 import com.enjoy.list.SqList;
 
+/**
+ * 线性表测试
+ * 
+ * @author S0S
+ * 
+ */
 public class SqListTest {
 
 	/**

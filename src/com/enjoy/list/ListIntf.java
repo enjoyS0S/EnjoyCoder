@@ -36,21 +36,21 @@ public interface ListIntf<T> {
 	/**
 	 * 返回链表的前驱
 	 */
-	public Object getPre(T element);
+	public T getPre(T element);
 
 	/**
 	 * 返回链表的后继
 	 */
-	public Object getNext(T element);
+	public T getNext(T element);
 
 	/**
 	 * 删除第i个元素，并返回其值，表长度减1
 	 */
-	public Object remove(int i);
+	public boolean remove(int i);
 
 	/**
 	 * 删除数据元素obj，并返回其值，表长度减1
 	 */
-	public Object remove(T element);
+	public boolean remove(T element);
 
 }
