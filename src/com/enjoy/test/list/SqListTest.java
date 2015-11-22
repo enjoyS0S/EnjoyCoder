@@ -12,7 +12,8 @@ public class SqListTest {
 		Random r = new Random();
 		SqList sqList = new SqList();
 		for (int i = 1; i < 10; i++) {
-			sqList.insertElemetAt(r.nextInt(20), i);
+			int obj = r.nextInt(20);
+			sqList.insertElemetAt(obj, i);
 		}
 		return sqList;
 	}
