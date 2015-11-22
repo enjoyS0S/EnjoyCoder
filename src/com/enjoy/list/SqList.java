@@ -1,5 +1,7 @@
 package com.enjoy.list;
 
+import java.util.Arrays;
+
 /**
  * 顺序表的实现
  * 
@@ -12,13 +14,13 @@ package com.enjoy.list;
  * @author S0S
  * 
  */
-public class SqList implements ListIntf {
+public class SqList<T> implements ListIntf<T> {
 
 	// maxlen表示线性表可能的最大数据元素数目
 	private final int maxlen = 1000;
 
 	// 存放线性表元素的数组
-	private Object v[] = new Object[maxlen];
+	private Object objs[] = new Object[maxlen];
 
 	/* 表示线性表的长度 */
 	private int len = 0;
@@ -27,7 +29,7 @@ public class SqList implements ListIntf {
 		super();
 	}
 
-	/*返回线性表可能的最大存储个数*/
+	/* 返回线性表可能的最大存储个数 */
 	public int getMaxlen() {
 		return maxlen;
 	}
@@ -39,40 +41,41 @@ public class SqList implements ListIntf {
 
 	@Override
 	public void clear() {
-		for (int i = 0; i < len; i++)
-			v[i] = null;
+		Arrays.fill(objs, null);
 		len = 0;
 	}
 
 	/**
 	 * 
-	 * 线性表的插入算法
-	 * 算法思路：1.判断线性表的存储空间是否已满，若已满，则进行“溢出”处理。
-	 * 			2.检查i值是否超出所允许的范围（1<=i<=n+1）,若超出，则进行“超出处理”。
-	 *			3.将线性表的第i个元素和它后面的所有元素均后移一个位置。
-	 * 			4.将新的数据元素写入下表为i-1的位置上。
-	 * 			5.线性表的长度增加1。
+	 * 线性表的插入算法 
+	 * 算法思路：
+	 * 1.判断线性表的存储空间是否已满，若已满，则进行“溢出”处理。
+	 * 2.检查i值是否超出所允许的范围（1<=i<=n+1）,若超出，则进行“超出处理”。 
+	 * 3.将线性表的第i个元素和它后面的所有元素均后移一个位置。
+	 * 4.将新的数据元素写入下表为i-1的位置上。 5.线性表的长度增加1。
 	 * 
-	 * @param obj	要插入的元素
-	 * @param i	插入的位置
+	 * @param obj 要插入的元素
+	 * @param i 插入的位置
 	 */
-	public void insertElemetAt(Object obj, int i) {
+	public void insertElemetAt(T element, int i) {
 		if (len == maxlen) { // 判断线性表的存储空间是否已满
-			System.out.println("溢出");
-			return;
+			throw new IndexOutOfBoundsException("线性表索引越界"); 
 		} else {
-			if ((i < 1) || (i > len + 1)) { // 检查i值是否超出所运允许的范围
-				System.out.println("插入位置不对");
-				return;
+			if ((i < 0) || (i > len)) { // 检查i值是否超出所运允许的范围
+				throw new IndexOutOfBoundsException("插入位置不对"); 
 			} else {
-				for (int j = len - 1; j >= i - 1; j--)
-					v[j + 1] = v[j]; // 将第i个元素和它后面的所有元素均后移一个位置
-				v[i - 1] = obj; // 将新的元素写入空出的下标为i-1的位置上
+				for (int j = len - 1; j >= i; j--)
+					objs[j + 1] = objs[j]; // 将第i个元素和它后面的所有元素均后移一个位置
+				objs[i] = element; // 将新的元素写入空出的下标为i-1的位置上
 				len++; // 线性表的长度增加1
-				return;
 			}
 		}
 	}
+	
+	//在线性顺序表的开始处添加一个元素。  
+    public void add(T element) {  
+    	insertElemetAt(element, len);  
+    } 
 
 	@Override
 	public boolean isEmpty() {
@@ -81,33 +84,32 @@ public class SqList implements ListIntf {
 
 	@Override
 	public Object get(int i) {
-		if (i > 0 && i < len)
-			return v[i];
+		if (i >= 0 && i < len)
+			return objs[i];
 		return null;
 	}
 
 	@Override
-	public int indexOf(Object obj) {
+	public int indexOf(T element) {
 		for (int i = 0; i < len; i++) {
-			if (obj.equals(v[i]))
+			if (element.equals(objs[i]))
 				return i;
 		}
-		return 0;
+		return -1;
 	}
 
 	@Override
-	public Object getPre(Object obj) {
-		int indexOf = indexOf(obj);
-		return indexOf == 0 ? null : v[indexOf - 1];
+	public Object getPre(T element) {
+		int indexOf = indexOf(element);
+		return indexOf < 0 ? null : objs[indexOf - 1];
 	}
 
 	@Override
-	public Object getNext(Object obj) {
-		int indexOf = indexOf(obj);
-		return indexOf == 0 ? null : v[indexOf + 1];
+	public Object getNext(T element) {
+		int indexOf = indexOf(element);
+		return indexOf < 0 ? null : objs[indexOf + 1];
 	}
 
-	
 	@Override
 	/**
 	 * 删除第i个元素，并返回其值，表长度减1 
@@ -117,23 +119,22 @@ public class SqList implements ListIntf {
 	 * 			4.线性表长度减1
 	 */
 	public Object remove(int i) {
-		if ((i < 1) || (i > len + 1)) { // 判断i值是否超出所允许的范围
-			System.out.println("删除位置不正确");
-			return null;
+		if ((i < 0) || (i > len)) { // 判断i值是否超出所允许的范围
+			throw new IndexOutOfBoundsException("删除位置不正确");
 		} else {
-			Object obj = v[i - 1];
+			Object obj = objs[i];
 			for (int j = i; j < len; j++)
-				v[j - 1] = v[j];
+				objs[j - 1] = objs[j];
 			len--;
 			return obj;
 		}
 	}
 
 	@Override
-	public Object remove(Object obj) {
-		int indexOf = indexOf(obj);
+	public Object remove(T element) {
+		int indexOf = indexOf(element);
 		remove(indexOf);
-		return obj;
+		return element;
 	}
 
 }

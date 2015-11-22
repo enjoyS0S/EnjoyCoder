@@ -6,7 +6,7 @@ package com.enjoy.list;
  * @author S0S
  * 
  */
-public interface ListIntf {
+public interface ListIntf<T> {
 
 	/**
 	 * 返回线性表的长度
@@ -31,17 +31,17 @@ public interface ListIntf {
 	/**
 	 * 第一个与obj满足关系equals()的数据元素的位序。若这样的数据元素不存在，则返回为-1
 	 */
-	public int indexOf(Object obj);
+	public int indexOf(T element);
 
 	/**
 	 * 返回链表的前驱
 	 */
-	public Object getPre(Object obj);
+	public Object getPre(T element);
 
 	/**
 	 * 返回链表的后继
 	 */
-	public Object getNext(Object obj);
+	public Object getNext(T element);
 
 	/**
 	 * 删除第i个元素，并返回其值，表长度减1
@@ -51,6 +51,6 @@ public interface ListIntf {
 	/**
 	 * 删除数据元素obj，并返回其值，表长度减1
 	 */
-	public Object remove(Object obj);
+	public Object remove(T element);
 
 }
