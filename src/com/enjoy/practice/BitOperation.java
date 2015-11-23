@@ -1,4 +1,4 @@
-package com.enjoy.basic;
+package com.enjoy.practice;
 
 /**
  * 这里介绍所有的关于位运算的方法 其中numberOf1_1 - numberOf1_3是计算一个整数的二进制中有多少个1

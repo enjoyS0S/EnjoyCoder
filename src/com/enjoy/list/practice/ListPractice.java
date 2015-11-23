@@ -21,7 +21,7 @@ public class ListPractice {
 	 * @param listNode
 	 * @return
 	 */
-	public void printListFromTailToHead(ListNode<Integer> listNode) {
+	public void printListFromTailToHead_1(ListNode<Integer> listNode) {
 		if (listNode == null) {
 			return;
 		}
@@ -32,6 +32,22 @@ public class ListPractice {
 		}
 		while (!stack.isEmpty()) {
 			System.out.print(stack.pop().data + " ");
+		}
+	}
+
+	/**
+	 * 链表从尾到头打印链表 算法思路：
+	 * 上一个方法我们用栈来实现链表从尾到头的打印，既然我们用可以用栈来实现，自然而然的我们就想到了递归，递归的本质就是一个栈结构
+	 * 。要实现反过来输出链表，我们美访问到一个结点的时候，先递归输出它后面的结点，再输出该结点本身，这样就实现了将输出结果反转过来。
+	 * 
+	 * @param listNode
+	 */
+	public void printListFromTailToHead_2(ListNode<Integer> listNode) {
+		if (listNode != null) {
+			if (listNode.next != null) {
+				printListFromTailToHead_2(listNode.next);
+			}
+			System.out.println(listNode.data + " ");
 		}
 	}
 

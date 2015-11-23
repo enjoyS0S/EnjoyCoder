@@ -1,4 +1,4 @@
-package com.enjoy.basic;
+package com.enjoy.practice;
 
 /**
  * 这里主要介绍常用的查找算法

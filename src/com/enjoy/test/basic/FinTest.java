@@ -2,7 +2,7 @@ package com.enjoy.test.basic;
 
 import org.junit.Test;
 
-import com.enjoy.basic.Find;
+import com.enjoy.practice.Find;
 
 public class FinTest {
 
