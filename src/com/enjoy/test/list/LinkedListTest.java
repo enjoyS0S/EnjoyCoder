@@ -32,4 +32,23 @@ public class LinkedListTest {
 			System.out.print(list.get(i) + " ");
 		}
 	}
+
+	/**
+	 * 公鸡5元 母鸡2元 小鸡1元3只
+	 */
+	@Test
+	public void testBuyChicken() {
+		// i代表公鸡的数量，公鸡最多可以买20只
+		for (int i = 0; i <= 20; i++) {
+			// j代表母鸡的数量，母鸡最多可以买50只
+			for (int j = 0; j <= 50; j++) {
+				// k代表小鸡的数量
+				int k = 100 - i - j;
+				// 小鸡的数量可以被3整除，三种鸡钱加起来等于100
+				if (k % 3 == 0 && 5 * i + 2 * j + k / 3 == 100) {
+					System.out.println("公鸡：" + i + "; 母鸡：" + j + "; 小鸡：" + k);
+				}
+			}
+		}
+	}
 }

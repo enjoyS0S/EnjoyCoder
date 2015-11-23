@@ -3,15 +3,17 @@ package com.enjoy.list;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-import com.enjoy.model.Lnode;
-
 /**
  * 顺序表的实现
  * 
- * 优点：1.随机存取元素容易实现，更具定位公式容易确定表中每个元素的存储位置，所以要制定第i个节点很方便 2.简单、直观
- * 缺点：1.插入和删除节点空难。由于表中的结点是一次连续存放的
- * ，所以插入或删除一个节点时，必须将插入点以后的节点依次向后移动，或将删除点以后的节点依次向前移动。
- * 2.扩展不灵活，建立表时，若估计不到表的最大长度，就难以确定分配的空间，影响扩展。 3.容易造成浪费。分配的空间过大时，会造成预留空间浪费。
+ * 优点：
+ * 1.随机存取元素容易实现，更具定位公式容易确定表中每个元素的存储位置，所以要制定第i个节点很方便 
+ * 2.简单、直观
+ * 
+ * 缺点：
+ * 1.插入和删除节点空难。由于表中的结点是一次连续存放的，所以插入或删除一个节点时，必须将插入点以后的节点依次向后移动，或将删除点以后的节点依次向前移动。
+ * 2.扩展不灵活，建立表时，若估计不到表的最大长度，就难以确定分配的空间，影响扩展。 
+ * 3.容易造成浪费。分配的空间过大时，会造成预留空间浪费。
  * 
  * @author S0S
  * 
@@ -22,14 +24,14 @@ public class SqList<T> implements ListIntf<T> {
 	private final int maxlen = 1000;
 
 	// 存放线性表元素的数组
-	private T objs[];
+	@SuppressWarnings("unchecked")
+	private T objs[] = (T[]) new Object[maxlen];
 
 	/* 表示线性表的长度 */
 	private int len = 0;
 
 	public SqList() {
 		super();
-		objs = newArrayByArrayClass(E, maxlen);
 	}
 
 	@SuppressWarnings({ "unchecked", "hiding" })
@@ -56,15 +58,16 @@ public class SqList<T> implements ListIntf<T> {
 	}
 
 	/**
-	 * 
-	 * 线性表的插入算法 算法思路： 1.判断线性表的存储空间是否已满，若已满，则进行“溢出”处理。
-	 * 2.检查i值是否超出所允许的范围（1<=i<=n+1）,若超出，则进行“超出处理”。 3.将线性表的第i个元素和它后面的所有元素均后移一个位置。
+	 * 线性表的插入算法
+	 *  
+	 * 算法思路： 
+	 * 1.判断线性表的存储空间是否已满，若已满，则进行“溢出”处理。
+	 * 2.检查i值是否超出所允许的范围（1<=i<=n+1）,若超出，则进行“超出处理”。 
+	 * 3.将线性表的第i个元素和它后面的所有元素均后移一个位置。
 	 * 4.将新的数据元素写入下表为i-1的位置上。 5.线性表的长度增加1。
 	 * 
-	 * @param obj
-	 *            要插入的元素
-	 * @param i
-	 *            插入的位置
+	 * @param obj 要插入的元素
+	 * @param i 插入的位置
 	 */
 	public void insertElemetAt(T element, int i) {
 		if (len == maxlen) { // 判断线性表的存储空间是否已满
@@ -131,7 +134,6 @@ public class SqList<T> implements ListIntf<T> {
 		if ((i < 0) || (i > len)) { // 判断i值是否超出所允许的范围
 			throw new IndexOutOfBoundsException("删除位置不正确");
 		} else {
-			Object obj = objs[i];
 			for (int j = i; j < len; j++)
 				objs[j - 1] = objs[j];
 			len--;
