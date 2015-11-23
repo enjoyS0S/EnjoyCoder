@@ -6,9 +6,9 @@ package com.enjoy.model;
  * @author S0S
  * 
  */
-public class Lnode<T> {
+public class ListNode<T> {
 
 	public T data;
-	public Lnode<T> next;
-
+	public ListNode<T> next;
+	
 }

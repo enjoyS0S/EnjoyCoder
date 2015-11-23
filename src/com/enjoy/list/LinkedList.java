@@ -1,6 +1,6 @@
 package com.enjoy.list;
 
-import com.enjoy.model.Lnode;
+import com.enjoy.model.ListNode;
 
 /**
  * 单链表
@@ -11,13 +11,13 @@ import com.enjoy.model.Lnode;
  */
 public class LinkedList<T> implements ListIntf<T> {
 
-	private Lnode<T> h = new Lnode<>(); // 头结点
+	private ListNode<T> h = new ListNode<>(); // 头结点
 
 	public LinkedList() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setH(Lnode<T> h) {
+	public void setH(ListNode<T> h) {
 		this.h = h;
 
 	}
@@ -30,8 +30,8 @@ public class LinkedList<T> implements ListIntf<T> {
 	 * @param p
 	 * @param element
 	 */
-	public void insertElementAfter(Lnode<T> p, T element) {
-		Lnode<T> s = new Lnode<>();
+	public void insertElementAfter(ListNode<T> p, T element) {
+		ListNode<T> s = new ListNode<>();
 		s.data = element;
 		s.next = p.next;
 		p.next = s;
@@ -46,14 +46,14 @@ public class LinkedList<T> implements ListIntf<T> {
 	 * @param element
 	 */
 	public boolean insertElementAt(int i, T element) {
-		Lnode<T> p = h, s;
+		ListNode<T> p = h, s;
 		int j = 0;
 		while (p != null && j < i - 1) { // 寻找第i - 1号结点
 			p = p.next;
 			j++;
 		}
 		if (p != null) {
-			s = new Lnode<>();
+			s = new ListNode<>();
 			s.data = element;
 			s.next = p.next; // 改变指针状态
 			p.next = s;
@@ -68,13 +68,13 @@ public class LinkedList<T> implements ListIntf<T> {
 	 * @param element
 	 * @return
 	 */
-	public Lnode<T> search(T element) {
+	public ListNode<T> search(T element) {
 		return null;
 	}
 
 	@Override
 	public int size() {
-		Lnode<T> p = h.next; // p指向第一个结点
+		ListNode<T> p = h.next; // p指向第一个结点
 		int count = 0;
 		while (p != null) { // 循环访问单链表的每个结点，p == null 时循环结束
 			count++;
@@ -105,7 +105,7 @@ public class LinkedList<T> implements ListIntf<T> {
 	 */
 	public T get(int i) {
 		int j = 0;
-		Lnode<T> p = h.next;
+		ListNode<T> p = h.next;
 		while (p != null && j < i) { // 移动指针p，直到p为空或p指向第i个元素
 			p = p.next;
 			j++;
