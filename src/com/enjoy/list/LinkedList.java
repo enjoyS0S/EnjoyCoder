@@ -111,7 +111,7 @@ public class LinkedList<T> implements ListIntf<T> {
 	 * 4.重复2、3知道p为空或p指向第i个元素
 	 */
 	public T get(int i) {
-		int j = 1;
+		int j = 0;
 		ListNode<T> p = headNode.next;
 		while (p != null && j < i) { // 移动指针p，直到p为空或p指向第i个元素
 			p = p.next;
