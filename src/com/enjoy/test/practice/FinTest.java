@@ -1,4 +1,4 @@
-package com.enjoy.test.basic;
+package com.enjoy.test.practice;
 
 import org.junit.Test;
 
