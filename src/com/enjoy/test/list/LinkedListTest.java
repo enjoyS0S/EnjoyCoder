@@ -17,8 +17,7 @@ public class LinkedListTest {
 		LinkedList<Integer> linkedList = new LinkedList<>();
 		for (int i = 0; i < 10; i++) {
 			int randomInt = RandomUtils.getRandomInt(10);
-			System.out.println(linkedList.insertElementAt(i, randomInt) + ";"
-					+ randomInt);
+			linkedList.insertElementAt(i, randomInt);
 		}
 		return linkedList;
 	}

@@ -19,11 +19,14 @@ public class LinkedList<T> implements ListIntf<T> {
 
 	public void setH(ListNode<T> h) {
 		this.headNode = h;
-
 	}
 
 	/**
-	 * 在结点p后加入值为x的结点 算法思路： 1.生成一个新结点s 2.将新 element 赋给新结点s的数据域 3.新结点链入单链表
+	 * 在结点p后加入值为x的结点 
+	 * 算法思路： 
+	 * 1.生成一个新结点s 
+	 * 2.将新 element 赋给新结点s的数据域 
+	 * 3.新结点链入单链表
 	 * 
 	 * 时间复杂度：O(1)
 	 * 
@@ -48,7 +51,7 @@ public class LinkedList<T> implements ListIntf<T> {
 	public boolean insertElementAt(int i, T element) {
 		ListNode<T> p = headNode, s;
 		int j = 0;
-		while (p != null && j < i - 1) { // 寻找第i - 1号结点
+		while (p != null && j < i) { // 寻找第i号结点
 			p = p.next;
 			j++;
 		}
@@ -57,7 +60,6 @@ public class LinkedList<T> implements ListIntf<T> {
 			s.data = element;
 			s.next = p.next; // 改变指针状态
 			p.next = s;
-			System.out.println(get(0));
 			return true; // 表示插入成功
 		} else
 			return false; // 表示插入失败
@@ -66,8 +68,8 @@ public class LinkedList<T> implements ListIntf<T> {
 	/**
 	 * 查找值为element的结点
 	 * 
-	 * 算法思路：
-	 * 1.从第一个结点开始扫描整个单链表，将结点数据域的值逐个与element相比较
+	 * 算法思路： 
+	 * 1.从第一个结点开始扫描整个单链表，将结点数据域的值逐个与element相比较 
 	 * 2.找到该结点后返回指向该结点的指针
 	 * 
 	 * @param element
@@ -94,12 +96,12 @@ public class LinkedList<T> implements ListIntf<T> {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		headNode.next = null;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return size() == 0 ? true : false;
+		return size() == 0;
 	}
 
 	@Override
@@ -123,10 +125,24 @@ public class LinkedList<T> implements ListIntf<T> {
 			return null;
 	}
 
+	public ListNode<T> get(T element) {
+		ListNode<T> p = headNode.next;
+		while (p != headNode && element != p.data)
+			p = p.next;
+		if (p == null)
+			return null;
+		return p;
+	}
+
 	@Override
 	public int indexOf(T element) {
-		// TODO Auto-generated method stub
-		return 0;
+		int position = 0;
+		ListNode<T> p = headNode.next;
+		while (p != null && p.data != element) {
+			p = p.next;
+			position++;
+		}
+		return position;
 	}
 
 	@Override
@@ -137,7 +153,7 @@ public class LinkedList<T> implements ListIntf<T> {
 
 	@Override
 	public T getNext(T element) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -153,7 +169,11 @@ public class LinkedList<T> implements ListIntf<T> {
 	}
 
 	/**
-	 * 算法思路： 1.将q指向p结点的直接后继 2.改变指针链接，把q结点的直接后继作为p结点的直接后继 3.从单链表中删除q结点 4.释放q结点空间
+	 * 算法思路： 
+	 * 1.将q指向p结点的直接后继 
+	 * 2.改变指针链接，把q结点的直接后继作为p结点的直接后继 
+	 * 3.从单链表中删除q结点 
+	 * 4.释放q结点空间
 	 * 
 	 * 算法的时间复杂度为：O(1)
 	 */
