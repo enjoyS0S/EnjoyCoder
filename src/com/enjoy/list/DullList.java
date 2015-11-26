@@ -10,6 +10,14 @@ import com.enjoy.model.DullNode;
  */
 public class DullList {
 
+	/**
+	 * 插入算法
+	 * 
+	 * @param h
+	 * @param i
+	 * @param x
+	 * @return
+	 */
 	public boolean insert(DullNode h, int i, char x) {
 		DullNode p, s;
 		int j;
