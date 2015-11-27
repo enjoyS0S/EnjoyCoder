@@ -11,7 +11,11 @@ import com.enjoy.model.DullNode;
 public class DullList {
 
 	/**
-	 * 插入算法
+	 * 双向链表的插入
+	 * 算法思路：
+	 * 1.通过指针p的移动在双向循环链表中依次查找第i个元素
+	 * 2.如果找到，则建立一个新结点s；
+	 * 3.将s和p以及p的前驱链接起来，也就是说，令s的前驱是p原来的前驱，s的后继是p
 	 * 
 	 * @param h
 	 * @param i
@@ -40,6 +44,16 @@ public class DullList {
 			return false;
 	}
 
+	/**
+	 * 双向链表的删除
+	 * 算法思路：
+	 * 1.通过指针p的移动在双向链表中依次查找第i个元素
+	 * 2.如果找到，改变指正链接，也就是说，令p的前驱指向p的后继，p的后继结点的前驱指针指向p原来的前驱
+	 * 3.释放p
+	 * @param h
+	 * @param i
+	 * @return
+	 */
 	public boolean delete(DullNode h, int i) {
 		DullNode p;
 		int j;
