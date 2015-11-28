@@ -12,7 +12,7 @@ public class UglyNumberTest {
 		UglyNumber number = new UglyNumber();
 		int uglyNumber = number.getUglyNumber(1500);
 		long endTime = System.currentTimeMillis();
-		long offsetTime = endTime - startTime;
+		float offsetTime = (endTime - startTime) / 1000.0000f;
 		System.out.println(offsetTime);
 		System.out.println(uglyNumber);
 	}

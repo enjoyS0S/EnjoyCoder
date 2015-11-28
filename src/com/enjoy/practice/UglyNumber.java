@@ -27,6 +27,11 @@ public class UglyNumber {
 		return number == 1 ? true : false;
 	}
 
+	/**
+	 * 获取第index个丑数
+	 * @param index
+	 * @return
+	 */
 	public int getUglyNumber(int index) {
 		if (index <= 0)
 			return 0;
