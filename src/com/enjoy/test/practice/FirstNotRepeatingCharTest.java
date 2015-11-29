@@ -6,15 +6,19 @@ import com.enjoy.practice.FirstNotRepeatingChar;
 
 public class FirstNotRepeatingCharTest {
 
-	@Test
-	public void testFirstNotRepeatingChar() {
-		String str = "aassgddajjg";
-		FirstNotRepeatingChar fnrc = new FirstNotRepeatingChar();
-		char firstNotRepeatingChar = (char) fnrc.firstNotRepeatingChar_01(str);
-		System.out.println(firstNotRepeatingChar);
+	private String str = "aasgddajjg";
 
-		for (int i = -Integer.MAX_VALUE; i < Integer.MAX_VALUE; i++) {
-			System.out.print((char) i);
-		}
+	@Test
+	public void testFirstNotRepeatingChar_01() {
+		FirstNotRepeatingChar fnrc = new FirstNotRepeatingChar();
+		int firstNotRepeatingChar = fnrc.firstNotRepeatingChar_01(str);
+		System.out.println(firstNotRepeatingChar);
+	}
+
+	@Test
+	public void testFirstNotRepeatingChar_02() {
+		FirstNotRepeatingChar fnrc = new FirstNotRepeatingChar();
+		int firstNotRepeatingChar = fnrc.firstNotRepeatingChar_02(str);
+		System.out.println(firstNotRepeatingChar);
 	}
 }
