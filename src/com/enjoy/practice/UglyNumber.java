@@ -12,7 +12,10 @@ package com.enjoy.practice;
 public class UglyNumber {
 
 	/**
-	 * 判断一个数是不是丑数
+	 * 判断一个数是不是丑数 算法思路：
+	 * 所谓一个数m是另一个数n的因子，是指n能被m整除，也就是说n%m==0。根据丑数的定义，丑数只能被2，3和5整除。
+	 * 也就是说如果一个数只能被2整除，我们把它连续除以2；如果能被3整除，就连续除以3；如果能被5整除，就连续除以5。
+	 * 如果我们最后得到的是1，那么这个数就是丑数，否则不是。
 	 * 
 	 * @param number
 	 * @return
@@ -29,10 +32,11 @@ public class UglyNumber {
 
 	/**
 	 * 获取第index个丑数
+	 * 
 	 * @param index
 	 * @return
 	 */
-	public int getUglyNumber(int index) {
+	public int getUglyNumber_01(int index) {
 		if (index <= 0)
 			return 0;
 		int number = 0;
@@ -44,6 +48,10 @@ public class UglyNumber {
 			}
 		}
 		return number;
+	}
+
+	public void getUglyNumber_02(int index) {
+
 	}
 
 }
