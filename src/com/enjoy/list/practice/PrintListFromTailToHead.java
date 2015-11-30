@@ -10,7 +10,7 @@ import com.enjoy.model.ListNode;
  * @author S0S
  * 
  */
-public class ListPractice {
+public class PrintListFromTailToHead {
 
 	/**
 	 * 链表从尾到头打印链表 
