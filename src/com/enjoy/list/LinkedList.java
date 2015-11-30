@@ -9,33 +9,32 @@ import com.enjoy.model.ListNode;
  * 
  * @param <T>
  */
-public class LinkedList<T> implements ListIntf<T> {
+public class LinkedList {
 
-	private ListNode<T> headNode = new ListNode<>(); // 头结点
+	private ListNode headNode = new ListNode(); // 头结点
 
 	public LinkedList() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public void setH(ListNode<T> h) {
+	public void setH(ListNode h) {
 		this.headNode = h;
 	}
 
 	/**
 	 * 在结点p后加入值为x的结点 
-	 * 算法思路： 
-	 * 1.生成一个新结点s 
-	 * 2.将新 element 赋给新结点s的数据域 
-	 * 3.新结点链入单链表
+	 * 
+	 * 算法思路：1.生成一个新结点s 
+	 * 			2.将新 c 赋给新结点s的数据域 
+	 * 			3.新结点链入单链表
 	 * 
 	 * 时间复杂度：O(1)
 	 * 
 	 * @param p
 	 * @param element
 	 */
-	public void insertElementAfter(ListNode<T> p, T element) {
-		ListNode<T> s = new ListNode<>();
-		s.data = element;
+	public void insertElementAfter(ListNode p, char c) {
+		ListNode s = new ListNode();
+		s.data = c;
 		s.next = p.next;
 		p.next = s;
 	}
@@ -48,16 +47,16 @@ public class LinkedList<T> implements ListIntf<T> {
 	 * @param i
 	 * @param element
 	 */
-	public boolean insertElementAt(int i, T element) {
-		ListNode<T> p = headNode, s;
+	public boolean insertElementAt(int i, char c) {
+		ListNode p = headNode, s;
 		int j = 0;
 		while (p != null && j < i) { // 寻找第i号结点
 			p = p.next;
 			j++;
 		}
 		if (p != null) {
-			s = new ListNode<>();
-			s.data = element;
+			s = new ListNode();
+			s.data = c;
 			s.next = p.next; // 改变指针状态
 			p.next = s;
 			return true; // 表示插入成功
@@ -75,17 +74,16 @@ public class LinkedList<T> implements ListIntf<T> {
 	 * @param element
 	 * @return
 	 */
-	public ListNode<T> search(T element) {
-		ListNode<T> p = headNode.next;
-		while (p != null && p.data != element) {
+	public ListNode search(char c) {
+		ListNode p = headNode.next;
+		while (p != null && p.data != c) {
 			p = p.next;
 		}
 		return p;
 	}
 
-	@Override
 	public int size() {
-		ListNode<T> p = headNode.next; // p指向第一个结点
+		ListNode p = headNode.next; // p指向第一个结点
 		int count = 0;
 		while (p != null) { // 循环访问单链表的每个结点，p == null 时循环结束
 			count++;
@@ -94,91 +92,77 @@ public class LinkedList<T> implements ListIntf<T> {
 		return count;
 	}
 
-	@Override
 	public void clear() {
 		headNode.next = null;
 	}
 
-	@Override
 	public boolean isEmpty() {
 		return size() == 0;
 	}
 
-	@Override
 	/**
+	 * 获取链表第i个结点
+	 * 
 	 * 算法思路：
 	 * 1.p从单链表的第一个数据结点出发，并定义j = 1
 	 * 2.在单链表中移动指针p，同时累计j
 	 * 3.通过j的累计查找j=i的结点
 	 * 4.重复2、3知道p为空或p指向第i个元素
 	 */
-	public T get(int i) {
+	public ListNode get(int i) {
 		int j = 0;
-		ListNode<T> p = headNode.next;
+		ListNode p = headNode.next;
 		while (p != null && j < i) { // 移动指针p，直到p为空或p指向第i个元素
 			p = p.next;
 			j++;
 		}
 		if (j == i) {
-			return p.data; // 返回第i个元素的存储位置
+			return p; // 返回第i个元素的存储位置
 		} else
 			return null;
 	}
 
-	public ListNode<T> get(T element) {
-		ListNode<T> p = headNode.next;
-		while (p != headNode && element != p.data)
+	/**
+	 * 获取链表值为c的结点
+	 * @param c
+	 * @return
+	 */
+	public ListNode get(char c) {
+		ListNode p = headNode.next;
+		while (p != headNode && c != p.data)
 			p = p.next;
 		if (p == null)
 			return null;
 		return p;
 	}
 
-	@Override
-	public int indexOf(T element) {
+	/**
+	 * 查找链表listNode
+	 * @param listNode
+	 * @return 返回listNode结点的索引
+	 */
+	public int indexOf(ListNode listNode) {
 		int position = 0;
-		ListNode<T> p = headNode.next;
-		while (p != null && p.data != element) {
+		ListNode p = headNode.next;
+		while (p != null && p != listNode																					) {
 			p = p.next;
 			position++;
 		}
 		return position;
 	}
 
-	@Override
-	public T getPre(T element) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public T getNext(T element) {
-
-		return null;
-	}
-
-	@Override
-	public boolean remove(int i) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean remove(T element) {
-		return false;
-	}
-
 	/**
-	 * 算法思路： 
-	 * 1.将q指向p结点的直接后继 
-	 * 2.改变指针链接，把q结点的直接后继作为p结点的直接后继 
-	 * 3.从单链表中删除q结点 
-	 * 4.释放q结点空间
+	 * 删除结点p之后的结点
+	 * 
+	 * 算法思路：1.将q指向p结点的直接后继 
+	 * 			2.改变指针链接，把q结点的直接后继作为p结点的直接后继 
+	 * 			3.从单链表中删除q结点 
+	 * 			4.释放q结点空间
 	 * 
 	 * 算法的时间复杂度为：O(1)
 	 */
-	public boolean remove(ListNode<T> p) {
-		ListNode<T> q;
+	public boolean remove(ListNode p) {
+		ListNode q;
 		if (p.next != null) {
 			q = p.next;
 			p.next = q.next;

@@ -13,10 +13,10 @@ import com.enjoy.utils.RandomUtils;
  */
 public class LinkedListTest {
 
-	public LinkedList<Integer> creatLinkedList(int len) {
-		LinkedList<Integer> linkedList = new LinkedList<>();
+	public LinkedList creatLinkedList(int len) {
+		LinkedList linkedList = new LinkedList();
 		for (int i = 0; i < 10; i++) {
-			int randomInt = RandomUtils.getRandomInt(10);
+			char randomInt = (char)RandomUtils.getRandomInt(10);
 			linkedList.insertElementAt(i, randomInt);
 		}
 		return linkedList;
@@ -24,13 +24,13 @@ public class LinkedListTest {
 
 	@Test
 	public void testLinkedListSize() {
-		LinkedList<Character> list = new LinkedList<>();
+		LinkedList list = new LinkedList();
 		System.out.println(list.size());
 	}
 
 	@Test
 	public void testInsertElementAt() {
-		LinkedList<Integer> linkedList = creatLinkedList(10);
+		LinkedList linkedList = creatLinkedList(10);
 		System.out.println("\n" + linkedList.size());
 		for (int i = 0; i < linkedList.size(); i++) {
 			System.out.print(linkedList.get(i) + " ");
