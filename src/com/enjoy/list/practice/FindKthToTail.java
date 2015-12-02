@@ -1,6 +1,12 @@
 package com.enjoy.list.practice;
 
+import java.util.List;
+
 import com.enjoy.model.ListNode;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 
 /**
  * 寻找链表倒数第k个结点
