@@ -1,11 +1,6 @@
 package com.enjoy.list.practice;
 
-import java.util.List;
-
 import com.enjoy.model.ListNode;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 
 /**
@@ -29,18 +24,18 @@ public class FindKthToTail {
 	 * @param k
 	 * @return
 	 */
-	public ListNode findKthTail_01(ListNode listNode, int k) {
-		if (listNode == null || k == 0)
+	public ListNode findKthTail_01(ListNode head, int k) {
+		if (head == null || k == 0)
 			return null;
 		int n = 0;
-		ListNode p = listNode;
+		ListNode p = head;
 		while (p != null) {
 			n++;
 			p = p.next;
 		}
 		if (n < k) 	//如果链表的长度小于k，则返回null
 			return null;
-		p = listNode;
+		p = head;
 		int index = 0;
 		while (index < n - k + 1) {
 			p = p.next;
@@ -51,19 +46,28 @@ public class FindKthToTail {
 	
 	
 	
-	public ListNode findKthTail_02(ListNode listNode, int k) {
-		if (listNode == null || k == 0)
+	/**
+	 * 我们发现，在上述算法中，遍历了两次链表，这并不是最优解，需要找一种只需要遍历依次链表就可以找到链表的倒数第k个结点。
+	 * 		为了实现只遍历一次链表就能找到倒数第k个结点，我们可以定义两个指针。第一个指针从立案表的头指针开始遍历链表向前
+	 * 走k-1步，第二个指针保持不动；从第k步开始，第二个指针也开始从链表的头指针开始遍历，由于两个指针的距离保持在k-1，当
+	 * 第一个（走在前面）指针到大链表的尾结点时，第二个指针（走在后面）指针正好是倒数第k个结点。
+	 * @param listNode
+	 * @param k
+	 * @return
+	 */
+	public ListNode findKthTail_02(ListNode head, int k) {
+		if (head == null || k <= 0)
 			return null;
-		ListNode pAHead = listNode;
+		ListNode pAHead = head;
 		ListNode pBehind = null;
 		for (int i = 0; i < k - 1; i++) {
-			if (pAHead.next != null) {
+			if (pAHead.next != null) {	//判断链表的长度是否大于等于k
 				pAHead = pAHead.next;
 			} else {
 				return null;
 			}
 		}
-		pBehind = listNode;
+		pBehind = head;
 		while (pAHead.next != null) {
 			pAHead = pAHead.next;
 			pBehind = pBehind.next;
