@@ -16,27 +16,6 @@ public class Reorder {
 		public boolean isTrue(int key);
 	}
 
-	public static void main(String[] args) {
-		int[] source = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		Reorder even = new Reorder();
-		System.out.print("reorderOddEven_0:");
-		int[] oddEven = even.reorderOddEven_0(source, source.length);
-		for (int i : oddEven)
-			System.out.print(i + " ");
-		System.out.print("\nreorderOddEven_1:");
-		oddEven = even.reorderOddEven_1(source, source.length);
-		for (int i : oddEven)
-			System.out.print(i + " ");
-		System.out.print("\nreorderOddEven_2:");
-		oddEven = even.reorderOddEven_2(source, source.length);
-		for (int i : oddEven)
-			System.out.print(i + " ");
-		System.out.print("\nreorderThreeAliquot:");
-		oddEven = even.reorderThreeAliquot(source, source.length);
-		for (int i : oddEven)
-			System.out.print(i + " ");
-	}
-
 	/*
 	 * 问题：将数组中的元素奇数放在前，偶数放在后
 	 * 分析：创建一个和已知数组等长的数组。扫描已知数组，将奇数从新数组首部开始存储，偶数从新数组末尾开始存放。
