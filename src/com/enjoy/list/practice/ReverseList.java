@@ -10,6 +10,11 @@ import com.enjoy.model.ListNode;
  */
 public class ReverseList {
 
+	/**
+	 * 链表反转
+	 * @param head
+	 * @return
+	 */
 	public ListNode reverseList(ListNode head) {
 		if (head == null)
 			return null;
