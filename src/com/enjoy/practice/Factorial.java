@@ -1,7 +1,5 @@
 package com.enjoy.practice;
 
-import java.util.stream.IntStream;
-
 /**
  * 计算阶乘 当小于0或者大于12的时候，抛出IllegalArgumentException
  * 
