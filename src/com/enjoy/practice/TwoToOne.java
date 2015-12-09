@@ -18,6 +18,12 @@ import java.util.TreeSet;
 
 public class TwoToOne {
 
+	/**
+	 * 利用hash表来求解
+	 * @param s1
+	 * @param s2
+	 * @return
+	 */
 	public String longest_01(String s1, String s2) {
 		if ((s1 == null || s1.isEmpty()) || (s2 == null || s2.isEmpty()))
 			return null;
@@ -31,6 +37,14 @@ public class TwoToOne {
 		return sb.toString();
 	}
 
+	/**
+	 * 逆向思维求解
+	 * 首先，得到一个a-z的字符串，然后一次检查这个字符串每个元素是否在s1和s2的并集里边，如果在，则将其添加到需要返回
+	 * 的字符串后边，如果没有，在下一个。
+	 * @param s1
+	 * @param s2
+	 * @return
+	 */
 	public String longest_02(String s1, String s2) {
 		if ((s1 == null || s1.isEmpty()) || (s2 == null || s2.isEmpty()))
 			return null;
